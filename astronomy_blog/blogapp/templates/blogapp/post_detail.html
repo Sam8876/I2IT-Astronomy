@@ -1,0 +1,48 @@
+{% extends 'blogapp/base.html' %}
+{% block content %}
+
+
+
+
+<article class="post-detail">
+  <h1 class="post-title">{{ post.title }}</h1>
+  <i>Published {{ post.created|date:"F j, Y" }}</i>
+  <div>{{ post.body|linebreaks }}</div>
+</article>
+<section class="comments">
+    <h3 class="leavecomment">Leave a comment</h3>
+  <form method="post" class="commentform">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="animated-button">
+        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
+        <span class="text">Submit</span><span class="circle"></span>
+        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
+    </button>
+  </form>
+
+  <div class="comments-container">
+  <h3>{{ comments.count }} Comment{{ comments|pluralize }}</h3>
+
+  {% for comment in comments %}
+    <div class="comment-card">
+      <div class="comment-header">
+        <span class="comment-author">{{ comment.author }}</span>
+        <span class="comment-date">{{ comment.created|date:"F j, Y, g:i a" }}</span>
+      </div>
+      <div class="comment-body">
+        {{ comment.body }}
+      </div>
+    </div>
+  {% empty %}
+    <p class="no-comments">No comments yet. Be the first to comment!</p>
+  {% endfor %}
+</div>
+</section>
+<section class="credits">
+  <h2>Credits</h2>
+  <p>Created by the Astronomy Club</p>
+  <p>&copy; {{ now.year }} International Institute of Information Technology</p>
+</section>
+
+{% endblock %}

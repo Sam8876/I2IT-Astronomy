@@ -1,0 +1,18 @@
+{% extends 'blogapp/base.html' %}
+{% block content %}
+<section class="posts-list">
+  <h2 class='ap'>All Posts</h2>
+  {% for post in posts %}
+    <div class="post-item">
+      <a href="{% url 'post_detail' slug=post.slug %}"><h3>{{ post.title }}</h3></a>
+      <a href="{% url 'post_detail' slug=post.slug %}"><p>{{ post.body|truncatewords:30 }}</p></a>
+    </div>
+  {% endfor %}
+</section>
+
+<section class="credits">
+  <h2>Credits</h2>
+  <p>Created by the Astronomy Club</p>
+  <p>&copy; {{ now.year }} International Institute of Information Technology</p>
+</section>
+{% endblock %}
