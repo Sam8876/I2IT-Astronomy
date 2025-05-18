@@ -1,3 +1,4 @@
+
 const sideNav = document.getElementById('sideNav');
 const burger = document.querySelector('.burger');
 const closeBtn = document.querySelector('.closebtn');

@@ -28,13 +28,7 @@ h3 {
     line-height: 6vh;
 }
 
-.webtitle {
-    font-family: 'Agency FB Bold', sans-serif;
-    font-weight: bold;
-    font-size: 5vw;
-    color: white;
-    line-height: 6vh;
-}
+
 
 .lp {
     font-size: 3vw;
@@ -149,19 +143,21 @@ h3 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);   
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
     z-index: 2;
-    
 }
 
-.overlay h1 {
-    color: #fff;
-    font-size: 3rem;
-    text-align: center;
+.overlay p {
+    font-family: 'Agency FB Bold', sans-serif;
+    font-weight: bold;
+    font-size: 5vw;
+    text-shadow: white 1px 1px;
+    color: white;
+    line-height: 7vh;
 }
 
 /* Latest Posts */
@@ -553,7 +549,7 @@ h3 {
 /* Responsive */
 @media (max-width:768px) {
 
-    .webtitle {
+    .overlay p {
         font-size: 5vh;
         line-height: 5vh;
     }

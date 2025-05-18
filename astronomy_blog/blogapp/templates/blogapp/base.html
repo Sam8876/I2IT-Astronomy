@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Astronomy Club{% endblock %}</title>
+  <title>{% block title %}Astronomy Club{% endblock %}</title>  
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <style>
     #loader {
@@ -68,23 +69,22 @@
   <script src="{% static 'js/script.js' %}"></script>
 
   <script>
-   const loadStartTime = Date.now();
+    const loadStartTime = Date.now();
 
-  window.addEventListener('load', function () {
-    const minimumLoadingTime = 100;
-    const timeElapsed = Date.now() - loadStartTime;
-    const remainingTime = minimumLoadingTime - timeElapsed;
-    const delay = remainingTime > 0 ? remainingTime : 0;
+    window.addEventListener('load', function () {
+      const minimumLoadingTime = 1000;
+      const timeElapsed = Date.now() - loadStartTime;
+      const remainingTime = minimumLoadingTime - timeElapsed;
+      const delay = remainingTime > 0 ? remainingTime : 0;
 
-    setTimeout(() => {
-      const loader = document.getElementById('loader');
-      loader.classList.add('fade-out');
       setTimeout(() => {
-        loader.style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-      }, 500);
-    }, delay);
-  });
+        const loader = document.getElementById('loader');
+        loader.classList.add('fade-out');
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }, delay);
+    });
 </script>
 
 </body>
