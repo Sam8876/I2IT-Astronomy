@@ -69,14 +69,16 @@
       <li><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'home' %}">About</a></li>
       <li><a href="/posts/">Posts</a></li>
+        <li id="login"><a href="/cms/">Login</a></li>
     </ul>
     </nav>
   <div id="sideNav" class="side-nav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <ul>
       <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="">About</a></li>
-      <li><a href="">Posts</a></li>
+      <li><a href="{% url 'home' %}">About</a></li>
+      <li><a href="/posts/">Posts</a></li>
+        <li><a href="/cms/">Login</a></li>
     </ul>
   </div>
     {% block content %}

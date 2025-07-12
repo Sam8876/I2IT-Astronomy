@@ -96,6 +96,10 @@ h3 {
     margin: 5px;
 }
 
+#login {
+    margin-left: 66vw;
+}
+
 /* Side Nav */
 .side-nav {
     height: 100%;
@@ -138,6 +142,20 @@ h3 {
 }
 
 /* Hero */
+html {
+  scroll-snap-type: y mandatory;   /* snap every time you scroll */
+  scroll-behavior: smooth;         /* animated scroll */
+}
+
+body {
+  overscroll-behavior-y: contain;
+}
+
+.snap-section {
+  min-height: 100vh;               /* full screen */
+  scroll-snap-align: start;        /* snap when top edge reaches view */
+}
+
 .hero {
     position: relative;
     width: 100%;
@@ -163,7 +181,7 @@ h3 {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background: rgba(0, 0, 0, 0.3);  */
+     /*background: rgba(0, 0, 0, 1);*/
     display: flex;
     justify-content: center;
     text-align: center;
@@ -172,7 +190,7 @@ h3 {
 }
 
 .overlay_text {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .overlay p {
@@ -181,7 +199,7 @@ h3 {
     font-size: 5vw;
     text-shadow: white 1px 1px;
     color: white;
-    line-height: 7vh;
+    line-height: 5vh;
     margin-top: 10px;
 }
 
@@ -395,13 +413,6 @@ h3 {
   height: 100%;
 }
 
-/*.post-body iframe {*/
-/*  max-width: 100%;*/
-/*  width: 100%;*/
-/*  aspect-ratio: 16 / 9;*/
-/*  border: none;*/
-/*  margin: 1rem 0;*/
-/*}*/
 
 .btn-streamfield {
   display: inline-block;
@@ -481,8 +492,9 @@ h3 {
 
 /* View all Button */
 .viewall {
+    position: absolute;
     align-self: center;
-    margin-top: 2vh;
+    margin-top: 10vh;
     padding: 17px 40px;
     width: 30vw;
     border-radius: 50px;
@@ -494,7 +506,7 @@ h3 {
     text-transform: uppercase;
     font-size: 15px;
     transition: all 0.5s ease;
-    
+    z-index: 100;
 }
 
 .viewall:hover {
@@ -519,6 +531,10 @@ h3 {
 @media (max-width:540px) {
     .post-content-wrapper {
         max-width: 800px;
+    }
+
+    .viewall {
+        margin-top: 10vh;
     }
 }
 @media (max-width:768px) {
@@ -550,60 +566,5 @@ h3 {
         display: block;
     }
 
-    .posts-preview {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .post-card {
-        width: 90%;
-        margin-left: 0;
-    }
-
-    .post-item {
-        width: 90%;
-        margin-left: 0;
-    }
-
-    .post-card-title {
-        font-size: 3.2vh;
-        margin-bottom: 0;
-    }
-
-    .post-card-text {
-        font-size: 2vh;
-    }
-
-    .post-title {
-        font-size: 5vh;
-    }   
-
-    .comments {
-        margin-left: 4vh;
-    }
-
-    .leavecomment {
-        font-size: 3vh;
-        margin-left: -2vw;
-    }
-
-    .comments-container h3 {
-        font-size: 3vh;
-        margin-left: -2vw;
-    }
-
-    .comment-card {
-        margin-left:-2vw;
-        max-width: 80vw;
-    }
-
-    .commentform {
-        margin-left: -2vw;
-    }
-
-    .viewall {
-        margin-top: 10px;
-    }
 
 }

@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-<section class="hero">
+<section class="hero snap-section">
   {% comment %} <video autoplay muted loop class="hero-video">
     <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
   </video>  {% endcomment %}
@@ -16,35 +16,31 @@
   </div>
 </section>
 
-<section class="hero">
+<section class="hero snap-section">
     <video autoplay muted loop class="hero-video">
     <source src="{% static 'videos/Bg2 1.mp4' %}" type="video/mp4">
   </video>
     <div class="overlay overlay_text">
-    <p>Interactive</p>
+    <p>"MANKIND WAS BORN ON EARTH,<br><br>
+        BUT IT WAS NEVER MEANT TO DIE HERE"</p>
   </div>
 </section>
 
-<section class="latest-posts">
-  <h2 class="lp">Latest Posts</h2>
-  <div class="posts-preview">
-    {% for post in latest_posts %}
-      <div class="post-card">
-        <a href="{% url 'post_detail' slug=post.slug %}">
-          <h3 class="post-card-title">{{ post.title }}</h3>
-          <p class="post-card-text">{{ post.body|truncatewords:25}}</p>
-        </a>
-      </div>
-    {% endfor %}
-    <a class="viewall" href={% url 'home' %}><span>View All</span></a>
+<section class="hero snap-section">
+    <video autoplay muted loop class="hero-video">
+    <source src="{% static 'videos/Videoplayback 1.mp4' %}" type="video/mp4">
+  </video>
+    <div class="overlay overlay_text">
+    <p>OUR BLOG PAGE</p>
+    <a class="viewall" href="/posts/"><span>LAUNCH</span></a>
   </div>
 </section>
-<section class="credits">
-  <h2>Credits</h2>
-  <p>Created by the Sameer Patil</p>
-  <p>&copy; {{ now.year }} International Institute of Information Technology</p>
-</section>
 
-  
+{##}
+{#<section class="credits">#}
+{#  <h2>Credits</h2>#}
+{#  <p>Created by the Sameer Patil</p>#}
+{#  <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
+{#</section>#}
 
 {% endblock %}
