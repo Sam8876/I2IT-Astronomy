@@ -1,0 +1,59 @@
+{% extends "blogapp/base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<article class="blog-post">
+
+  {% if page.header_image %}
+    {% image page.header_image original as header_img %}
+    <div class="post-hero" style="background-image: url('{{ header_img.url }}');">
+      <div class="hero-overlay">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-date">{{ page.date }}</p>
+          <button class="scroll-down" onclick="scrollToContent()" aria-label="Scroll down">
+                &#x2193;
+          </button>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="post-content-wrapper">
+    <div class="post-body">
+        {% for block in page.body %}
+            {% if block.block_type == "button" %}
+                <a href="{{ block.value.url }}" class="btn-streamfield" target="_blank" rel="noopener noreferrer">
+                    {{ block.value.text }}
+                </a>
+            {% else %}
+                {% if block.block_type == "embed" %}
+                  <div class="embed-responsive">
+                    {{ block }}
+                  </div>
+                {% else %}
+                  {{ block }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="back-link">
+      <a href="/posts/">← Back to Posts</a>
+    </div>
+  </div>
+
+</article>
+<section class="credits">
+  <h2>Credits</h2>
+  <p>Created by Sameer Patil</p>
+  <p>&copy; {{ now.year }} International Institute of Information Technology</p>
+</section>
+
+<script>
+    function scrollToContent() {
+    window.scrollTo({
+      top: window.innerHeight - 70,
+      behavior: 'smooth'
+    });
+  }
+</script>
+{% endblock %}
