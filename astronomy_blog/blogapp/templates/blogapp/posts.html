@@ -1,6 +1,12 @@
 {% extends 'blogapp/base.html' %}
+
+
 {% block content %}
+
+
 <section class="posts-list">
+
+
   <h2 class='ap'>All Posts</h2>
   {% for post in posts %}
     <div class="post-item">
@@ -14,5 +20,7 @@
   <h2>Credits</h2>
   <p>Created by the Astronomy Club</p>
   <p>&copy; {{ now.year }} International Institute of Information Technology</p>
+
+
 </section>
 {% endblock %}

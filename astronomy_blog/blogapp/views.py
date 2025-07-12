@@ -5,12 +5,18 @@ from .forms import CommentForm
 # Home view: hero + latest 3 posts
 def home(request):
     latest_posts = Post.objects.all()[:3]
-    return render(request, 'blogapp/home.html', {'latest_posts': latest_posts})
+    return render(request, 'blogapp/home.html', {
+        'latest_posts': latest_posts,
+        'show_loader': True
+    })
 
 # Posts list view
 def posts(request):
     all_posts = Post.objects.all()
     return render(request, 'blogapp/posts.html', {'posts': all_posts})
+
+def about_view(request):
+    return render(request, 'blogapp/about.html')
 
 # Post detail & comment handling
 def post_detail(request, slug):

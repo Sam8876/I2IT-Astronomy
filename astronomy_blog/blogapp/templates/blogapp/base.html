@@ -23,7 +23,7 @@
       top: 0; left: 0;
       width: 100%;
       height: 100vh;
-      background-color: rgb(37, 150, 190); /* Fallback bg */
+      background-color: black; /* Fallback bg */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -42,19 +42,22 @@
       transition: opacity 0.6s ease-out;
     }
 
+
     </style>
 </head>
 
-<body  class="noscroll"> <!-- scroll disabled initially -->
+<body  {% if show_loader %}class="noscroll"{% endif %}> <!-- scroll disabled initially -->
     <!-- Loading Screen -->
+    {% if show_loader %}
     <div id="loader">
     <video id="loadingVideo" autoplay muted playsinline>
-      <source src="{% static 'videos/launch.mp4' %}" type="video/mp4">
+      <source src="{% static 'videos/Launch2.mp4' %}" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
+    {% endif %}
     <!-- Main Screen -->
-  <div id="main-content">
+<div id="main-content">
   <nav class="navbar">
     <div class="burger" onclick="toggleNav()">
       <div class="line1"></div>
@@ -75,8 +78,10 @@
       <li><a href="{% url 'posts' %}">Posts</a></li>
     </ul>
   </div>
-  <div id="main-content">
-  {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
+</div>
+
   
   <script src="{% static 'js/script.js' %}"></script>
 
@@ -87,6 +92,7 @@
     const loadStartTime = Date.now();
 
     // Ensure video is at least 1 second long before removing loader
+
     video.addEventListener('ended', () => {
       const minDuration = 1000; // 1 second
       const elapsed = Date.now() - loadStartTime;
@@ -102,7 +108,8 @@
         }, 600); // match fade duration
       }, waitTime);
     });
+
 </script>
-</div>
+
 </body>
 </html>

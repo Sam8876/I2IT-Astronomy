@@ -151,6 +151,10 @@ h3 {
     z-index: 2;
 }
 
+.overlay_text {
+    background: rgba(0, 0, 0, 0.3);
+}
+
 .overlay p {
     font-family: 'Agency FB Bold', sans-serif;
     font-weight: bold;
@@ -159,6 +163,10 @@ h3 {
     color: white;
     line-height: 7vh;
     margin-top: 10px;
+}
+
+.bggif {
+    position: fixed;
 }
 
 /* Latest Posts */

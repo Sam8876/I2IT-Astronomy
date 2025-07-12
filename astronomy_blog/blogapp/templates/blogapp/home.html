@@ -7,14 +7,24 @@
   {% comment %} <video autoplay muted loop class="hero-video">
     <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
   </video>  {% endcomment %}
-  <img srcset="{% static 'images/bg.webp' %} 3840w,
-               {% static 'images/bg.webp' %} 2560w,
-               {% static 'images/bgfhd.png' %} 1920w"
+  <img srcset="{% static 'images/bg.jpg' %} 3840w,
+               {% static 'images/bg.jpg' %} 2560w,
+               {% static 'images/bgfhd.jpg' %} 1920w"
        src="{% static 'images/bg.webp' %}" type="image/webp" class="hero-video" alt="BG">
   <div class="overlay">
     <p class="webtitle">Welcome to I2IT Astronomy Club</p>
   </div>
 </section>
+
+<section class="hero">
+    <video autoplay muted loop class="hero-video">
+    <source src="{% static 'videos/Bg2 1.mp4' %}" type="video/mp4">
+  </video>
+    <div class="overlay overlay_text">
+    <p>Interactive</p>
+  </div>
+</section>
+
 <section class="latest-posts">
   <h2 class="lp">Latest Posts</h2>
   <div class="posts-preview">
@@ -22,7 +32,7 @@
       <div class="post-card">
         <a href="{% url 'post_detail' slug=post.slug %}">
           <h3 class="post-card-title">{{ post.title }}</h3>
-          <p class="post-card-text">{{ post.body|truncatewords:20 }}</p>
+          <p class="post-card-text">{{ post.body|truncatewords:25}}</p>
         </a>
       </div>
     {% endfor %}
