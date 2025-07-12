@@ -7,7 +7,10 @@
   {% comment %} <video autoplay muted loop class="hero-video">
     <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
   </video>  {% endcomment %}
-  <img src="{% static 'images/bg.webp' %}" type="image/webp" class="hero-video">
+  <img srcset="{% static 'images/bg.webp' %} 3840w,
+               {% static 'images/bg.webp' %} 2560w,
+               {% static 'images/bgfhd.png' %} 1920w"
+       src="{% static 'images/bg.webp' %}" type="image/webp" class="hero-video" alt="BG">
   <div class="overlay">
     <p class="webtitle">Welcome to I2IT Astronomy Club</p>
   </div>

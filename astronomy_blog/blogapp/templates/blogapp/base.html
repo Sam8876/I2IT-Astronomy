@@ -3,47 +3,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" shrink-to-fit=no">
   <title>{% block title %}Astronomy Club{% endblock %}</title>  
   <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <style>
+      html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Prevent scroll during loading */
+    body.noscroll {
+      overflow: hidden;
+    }
+
     #loader {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background-color: #1f1f1f;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        opacity: 1;
-        transition: opacity 0.5s ease;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgb(37, 150, 190); /* Fallback bg */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      overflow: hidden;
     }
 
-    #loader img {
-        width: 100px;
-        height: 100px
-    }
-
-    #gif {
-       margin-left: 10px;
-       color: white;
+    #loader video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     #loader.fade-out {
-        opacity: 0;
-    } 
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+    }
+
     </style>
 </head>
 
-<body>
+<body  class="noscroll"> <!-- scroll disabled initially -->
     <!-- Loading Screen -->
     <div id="loader">
-        <img src="{% static 'images/loader.gif' %}" alt="Launching">
-        <p id="gif">LAUNCHING<p>
-    </div>
-
+    <video id="loadingVideo" autoplay muted playsinline>
+      <source src="{% static 'videos/launch.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+    <!-- Main Screen -->
+  <div id="main-content">
   <nav class="navbar">
     <div class="burger" onclick="toggleNav()">
       <div class="line1"></div>
@@ -64,28 +75,34 @@
       <li><a href="{% url 'posts' %}">Posts</a></li>
     </ul>
   </div>
+  <div id="main-content">
   {% block content %}{% endblock %}
   
   <script src="{% static 'js/script.js' %}"></script>
 
   <script>
+    const video = document.getElementById('loadingVideo');
+    const loader = document.getElementById('loader');
+    const main = document.getElementById('main-content');
     const loadStartTime = Date.now();
 
-    window.addEventListener('load', function () {
-      const minimumLoadingTime = 1000;
-      const timeElapsed = Date.now() - loadStartTime;
-      const remainingTime = minimumLoadingTime - timeElapsed;
-      const delay = remainingTime > 0 ? remainingTime : 0;
+    // Ensure video is at least 1 second long before removing loader
+    video.addEventListener('ended', () => {
+      const minDuration = 1000; // 1 second
+      const elapsed = Date.now() - loadStartTime;
+      const waitTime = Math.max(0, minDuration - elapsed);
 
       setTimeout(() => {
-        const loader = document.getElementById('loader');
         loader.classList.add('fade-out');
         setTimeout(() => {
           loader.style.display = 'none';
-        }, 500);
-      }, delay);
+          main.style.display = 'block';
+
+          document.body.classList.remove('noscroll');
+        }, 600); // match fade duration
+      }, waitTime);
     });
 </script>
-
+</div>
 </body>
 </html>
