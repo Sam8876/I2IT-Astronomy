@@ -6,23 +6,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.admin.panels import FieldPanel
 from wagtail.search import index
 from wagtail.embeds.blocks import EmbedBlock
-# class HomePage(Page):
-#     body = StreamField([
-#         ("heading", blocks.CharBlock(classname="full title")),
-#         ("subheading", blocks.CharBlock(classname="title")),
-#         ("paragraph", blocks.RichTextBlock(features=["bold", "italic", "link", "ul", "ol"])),
-#         ("image", ImageChooserBlock()),
-#         ("quote", blocks.BlockQuoteBlock()),
-#         ("html", blocks.RawHTMLBlock()),
-#         ("button", blocks.StructBlock([
-#             ("text", blocks.CharBlock(required=True)),
-#             ("url", blocks.URLBlock(required=True)),
-#         ])),
-#     ], use_json_field=True, blank=True)
-#
-#     content_panels = Page.content_panels + [
-#         FieldPanel("body"),
-#     ]
+from wagtail.fields import RichTextField
 
 class BlogIndexPage(Page):
     """Holds and lists all BlogPage children (URL: /posts/)."""
@@ -57,6 +41,9 @@ class BlogPage(Page):
             ("heading", blocks.CharBlock(classname="full title")),
             ("subheading", blocks.CharBlock(classname="title")),
             ("paragraph", blocks.RichTextBlock(features=["bold", "italic", "link", "ul", "ol"])),
+            ("richtext", blocks.RichTextBlock(features=[
+                "h2", "h3", "bold", "italic", "link", "ul", "ol", "image", "embed"
+            ])),
             ("image", ImageChooserBlock()),
             ("quote", blocks.BlockQuoteBlock()),
             ("embed", EmbedBlock()),
@@ -90,3 +77,30 @@ class BlogPage(Page):
     # Only allow BlogPage under BlogIndexPage
     parent_page_types = ["cms.BlogIndexPage"]
     subpage_types: list[str] = []  # can’t create pages beneath a post
+
+class MemberBlock(blocks.StructBlock):
+    name = blocks.CharBlock(required=True)
+    title = blocks.CharBlock(required=True)
+    photo = ImageChooserBlock(required=True)
+
+class DepartmentBlock(blocks.StructBlock):
+    department_name = blocks.CharBlock(required=True)
+    members = blocks.ListBlock(MemberBlock())
+
+    class Meta:
+        template = "cms/blocks/department_block.html"
+        icon = "group"
+        label = "Department"
+
+class AboutPage(Page):
+    template = "cms/about_page.html"
+
+    club_description = RichTextField()
+    departments = StreamField([
+        ("department", DepartmentBlock())
+    ], use_json_field=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel("club_description"),
+        FieldPanel("departments"),
+    ]

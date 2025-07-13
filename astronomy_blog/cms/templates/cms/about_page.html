@@ -1,0 +1,19 @@
+{% extends "blogapp/base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+  <section class="about-club">
+    <h1 class="about-title">{{ page.title }}</h1>
+    {{ page.club_description|richtext }}
+  </section>
+
+  {% for block in page.departments %}
+    {% include_block block %}
+  {% endfor %}
+<section class="credits">
+  <h2>Credits</h2>
+  <p>Created by the Sameer Patil</p>
+  <p>&copy; {{ now.year }} International Institute of Information Technology</p>
+</section>
+{% endblock %}
