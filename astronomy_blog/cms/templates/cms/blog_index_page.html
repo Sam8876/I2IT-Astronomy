@@ -1,7 +1,11 @@
 {% extends "blogapp/base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
+{% load static %}
 
 {% block content %}
+<div id="loadergif">
+  <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+</div>
 <section class="section">
   <div class="container">
     <h1 class="index-title">{{ page.title }}</h1>

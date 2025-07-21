@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" shrink-to-fit=no">
-  <title>{% block title %}Astronomy Club{% endblock %}</title>  
+  <title>{% block title %}Astronomy Club{% endblock %}</title>
+    {% block meta %}{% endblock %}
   <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2.0.1">
   <style>
       html, body {
         margin: 0;
@@ -42,7 +43,6 @@
       opacity: 0;
       transition: opacity 0.6s ease-out;
     }
-
 
     </style>
 </head>
@@ -85,8 +85,7 @@
     {% endblock %}
 </div>
 
-  
-  <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}?v=2.0.1"></script>
 
   <script>
     const video = document.getElementById('loadingVideo');
