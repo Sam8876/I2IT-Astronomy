@@ -3,44 +3,55 @@
 {% load static %}
 
 {% block content %}
-<section class="hero">
-  {% comment %} <video autoplay muted loop class="hero-video">
-    <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
-  </video>  {% endcomment %}
-  <img srcset="{% static 'images/bg.jpg' %} 3840w,
+    <section class="hero">
+        {% comment %}
+            <video autoplay muted loop class="hero-video">
+                <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
+            </video>  {% endcomment %}
+        <img srcset="{% static 'images/bg.jpg' %} 3840w,
                {% static 'images/bg.jpg' %} 2560w,
                {% static 'images/bgfhd.jpg' %} 1920w"
-       src="{% static 'images/bg.webp' %}" type="image/webp" class="hero-video" alt="BG">
-  <div class="overlay">
-    <p class="webtitle">Welcome to I2IT Astronomy Club</p>
-  </div>
-</section>
+             src="{% static 'images/bg.webp' %}" type="image/webp" class="hero-video" alt="BG">
+        <div class="overlay">
+            <p class="webtitle">Welcome to I2IT Astronomy Club</p>
+        </div>
+    </section>
 
-<section class="hero">
-    <video autoplay muted loop class="hero-video">
-    <source src="{% static 'videos/Bg2 1.mp4' %}" type="video/mp4">
-  </video>
-    <div class="overlay overlay_text">
-    <p>"MANKIND WAS BORN ON EARTH,<br><br>
-        BUT IT WAS NEVER MEANT TO DIE HERE"</p>
-  </div>
-</section>
+    <section class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="{% static 'videos/Bg2 1.mp4' %}" type="video/mp4">
+        </video>
+        <div class="overlay overlay_text">
+            <p>"MANKIND WAS BORN ON EARTH,<br><br>
+                BUT IT WAS NEVER MEANT TO DIE HERE"</p>
+        </div>
+    </section>
 
-<section class="hero">
-    <video autoplay muted loop class="hero-video">
-    <source src="{% static 'videos/Videoplayback 1.mp4' %}" type="video/mp4">
-  </video>
-    <div class="overlay overlay_text">
-    <p>OUR BLOG PAGE</p>
-    <a class="viewall" href="/posts/"><span>LAUNCH</span></a>
-  </div>
-</section>
+    <section class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="{% static 'videos/Videoplayback 1.mp4' %}" type="video/mp4">
+        </video>
+        <div class="overlay overlay_text">
+            <p>OUR BLOG PAGE</p>
+            <a class="viewall" href="/posts/"><span>LAUNCH</span></a>
+        </div>
+    </section>
 
-{##}
-{#<section class="credits">#}
-{#  <h2>Credits</h2>#}
-{#  <p>Created by the Sameer Patil</p>#}
-{#  <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
-{#</section>#}
+    {##}
+    {#<section class="credits">#}
+    {#  <h2>Credits</h2>#}
+    {#  <p>Created by the Sameer Patil</p>#}
+    {#  <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
+    {#</section>#}
+    <script>
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
 
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                window.scrollTo(0, 0);
+            }
+        });
+    </script>
 {% endblock %}

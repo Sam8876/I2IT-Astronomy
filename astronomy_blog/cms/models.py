@@ -3,10 +3,12 @@ from wagtail.models import Page
 from wagtail.fields import StreamField
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.search import index
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.fields import RichTextField
+from modelcluster.models import ClusterableModel
+from modelcluster.fields import ParentalKey
 
 class BlogIndexPage(Page):
     """Holds and lists all BlogPage children (URL: /posts/)."""
@@ -77,6 +79,55 @@ class BlogPage(Page):
     # Only allow BlogPage under BlogIndexPage
     parent_page_types = ["cms.BlogIndexPage"]
     subpage_types: list[str] = []  # can’t create pages beneath a post
+
+
+class AstroCalendarPage(Page, ClusterableModel):
+    template = "cms/astrocalendar_page.html"
+
+    # background_image = models.ForeignKey(
+    #     'wagtailimages.Image',  # 👈 Correct usage in Wagtail 7
+    #     null=True,
+    #     blank=True,
+    #     on_delete=models.SET_NULL,
+    #     related_name='+'
+    # )
+
+    content_panels = Page.content_panels + [
+        # FieldPanel('background_image'),  # This works in Wagtail 7
+        InlinePanel('events', label="Astronomical Events"),
+    ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context['events'] = self.events.all()
+        return context
+
+class AstroEvent(models.Model):
+    page = ParentalKey(AstroCalendarPage, related_name='events', on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    date = models.DateField()
+    description = RichTextField()
+    event_type = models.CharField(
+        max_length=50,
+        choices=[
+            ('eclipse', 'Eclipse'),
+            ('meteor', 'Meteor Shower'),
+            ('planetary', 'Planetary'),
+            ('other', 'Other')
+        ],
+        default='other'
+    )
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('date'),
+        FieldPanel('description'),
+        FieldPanel('event_type'),
+    ]
+
+    def __str__(self):
+        return f"{self.title} on {self.date}"
+
 
 class MemberBlock(blocks.StructBlock):
     name = blocks.CharBlock(required=True)

@@ -34,3 +34,4 @@ tzdata==2025.2
 urllib3==2.5.0
 wagtail==7.0.1
 Willow==1.10.0
+wagtail-modeladmin==2.2.0

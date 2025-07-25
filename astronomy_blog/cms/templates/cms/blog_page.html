@@ -7,83 +7,85 @@
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block meta %}
-  <!-- Open Graph / Social sharing meta -->
-  <meta property="og:title" content="{{ page.title }}" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <!-- Open Graph / Social sharing meta -->
+    <meta property="og:title" content="{{ page.title }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
 
-  {% if page.header_image %}
-    <meta property="og:image" content="{{ page.header_image.file.url }}" />
-    <meta name="twitter:image" content="{{ page.header_image.file.url }}">
-  {% endif %}
+    {% if page.header_image %}
+        <meta property="og:image" content="{{ page.header_image.file.url }}"/>
+        <meta name="twitter:image" content="{{ page.header_image.file.url }}">
+    {% endif %}
 
-  <meta property="og:description" content="{{ page.search_description|default:"Explore this blog post on Astronomy Club." }}" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ page.title }}">
-  <meta name="twitter:description" content="{{ page.search_description|default:"Read more at Astronomy Club!" }}">
+    <meta property="og:description"
+          content="{{ page.search_description|default:"Explore this blog post on Astronomy Club." }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="{{ page.title }}">
+    <meta name="twitter:description" content="{{ page.search_description|default:"Read more at Astronomy Club!" }}">
 {% endblock %}
 
 
 {% block content %}
-<!-- Loader -->
-<div id="loadergif">
-  <img src="{% static 'images/loader.gif' %}" alt="Loading...">
-</div>
-<!-- Main Blog Content -->
+    <!-- Loader -->
+    <div id="loadergif">
+        <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+    </div>
+    <!-- Main Blog Content -->
 
     <article class="blog-post">
 
-      {% if page.header_image %}
-        {% image page.header_image original as header_img %}
-        <div class="post-hero" style="background-image: url('{{ header_img.url }}');">
-          <div class="hero-overlay">
-            <h1 class="post-title">{{ page.title }}</h1>
-            <p class="post-date">{{ page.date }}</p>
-              <button class="scroll-down" onclick="scrollToContent()" aria-label="Scroll down">
-                    &#x2193;
-              </button>
-          </div>
-        </div>
-      {% endif %}
+        {% if page.header_image %}
+            {% image page.header_image original as header_img %}
+            <div class="post-hero" style="background-image: url('{{ header_img.url }}');">
+                <div class="hero-overlay">
+                    <h1 class="post-title">{{ page.title }}</h1>
+                    <p class="post-date">{{ page.date }}</p>
+                    <button class="scroll-down" onclick="scrollToContent()" aria-label="Scroll down">
+                        &#x2193;
+                    </button>
+                </div>
+            </div>
+        {% endif %}
 
-      <div class="post-content-wrapper">
-        <div class="post-body">
-            {% for block in page.body %}
-                {% if block.block_type == "button" %}
-                    <a href="{{ block.value.url }}" class="btn-streamfield" target="_blank" rel="noopener noreferrer">
-                        {{ block.value.text }}
-                    </a>
-                {% else %}
-                    {% if block.block_type == "embed" %}
-                      <div class="embed-responsive">
-                        {{ block }}
-                      </div>
+        <div class="post-content-wrapper">
+            <div class="post-body">
+                {% for block in page.body %}
+                    {% if block.block_type == "button" %}
+                        <a href="{{ block.value.url }}" class="btn-streamfield" target="_blank"
+                           rel="noopener noreferrer">
+                            {{ block.value.text }}
+                        </a>
                     {% else %}
-                      {{ block }}
+                        {% if block.block_type == "embed" %}
+                            <div class="embed-responsive">
+                                {{ block }}
+                            </div>
+                        {% else %}
+                            {{ block }}
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
 
-        <div class="back-link">
-          <a href="/posts/">← Back to Posts</a>
+            <div class="back-link">
+                <a href="/posts/">← Back to Posts</a>
+            </div>
         </div>
-      </div>
 
     </article>
     <section class="credits">
-      <h2>Credits</h2>
-      <p>Created by Sameer Patil</p>
-      <p>&copy; {{ now.year }} International Institute of Information Technology</p>
+        <h2>Credits</h2>
+        <p>Created by Sameer Patil</p>
+        <p>&copy; {{ now.year }} International Institute of Information Technology</p>
     </section>
 
 
-<script>
-    function scrollToContent() {
-        window.scrollTo({
-          top: window.innerHeight - 70,
-          behavior: 'smooth'
-        });
-    }
-</script>
+    <script>
+        function scrollToContent() {
+            window.scrollTo({
+                top: window.innerHeight - 70,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 {% endblock %}
