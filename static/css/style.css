@@ -69,22 +69,29 @@ h3 {
 
 /* Navbar */
 .navbar {
+    margin-top: -1.8vh;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     align-items: center;
+    justify-content: center;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.5);
+    /*background: rgba(0, 0, 0, 0.5);*/
     /* background-image: linear-gradient(rgba(255, 255, 255, 0.5), transparent); */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);*/
     position: fixed;
     width: 100%;
     z-index: 1000;
 }
 
 .nav-links {
-    margin-left: 2vw;
+    align-content: center;
+    align-items: center;
+    /*margin-left: 2vw;*/
     list-style: none;
     display: flex;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 10px;
 }
 
 .nav-links li {
@@ -559,12 +566,38 @@ h3 {
 /*About Page*/
 
 .about-title {
-    font-size: 5vw;
+    font-size: 3vw;
     font-family: 'Agency FB', sans-serif;
     font-weight: bold;
     margin-bottom: 2rem;
     text-align: left;
     color: white;
+}
+
+.glow-wrapper {
+    flex: 50%;
+    margin: auto;
+    display: inline-block;
+    padding: 5px; /* space for glow */
+    border-radius: 50%;
+}
+
+.glow-wrapper img {
+    width: 30vw;   /* adjust as needed */
+    height: 30vw;  /* keep 1:1 ratio */
+    border-radius: 50%; /* make circle */
+    border: 3px solid white; /* solid border */
+    box-shadow: 0 0 15px #000, 0 0 30px #0ff, 0 0 45px #000; /* glowing effect */
+    object-fit: cover; /* crop image neatly */
+    display: block;
+}
+
+.about-text {
+    margin-top: 2vh;
+    flex: 50%;
+    border-radius: 50px;
+    box-shadow: 0 0 13px white;
+    padding: 0 2vw 2vh 2vw;
 }
 
 .about-club {
@@ -574,9 +607,12 @@ h3 {
     color: white;
     font-size: 1.1rem;
     line-height: 1.7;
-    max-width: 1100px;
+    max-width: 85vw;
     margin: auto;
     text-align: left;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
 }
 
 .department-carousel {
@@ -620,6 +656,10 @@ h3 {
     flex: 0 0 auto;
     backdrop-filter: blur(4px);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.member-card:hover {
+    box-shadow:  0 0 15px #00a885;
 }
 
 /* Image styled as a clean circle */
@@ -670,7 +710,7 @@ h3 {
 @media (max-width: 541px) {
 
     .about-title {
-        font-size: 7vh;
+        font-size: 5vh;
         margin-top: 2vh;
     }
 
@@ -690,6 +730,11 @@ h3 {
 }
 
 @media (max-width: 768px) {
+
+    .navbar {
+        justify-content: left;
+        margin-top: 0;
+    }
 
     .container {
         padding-top: 5vh;
@@ -722,5 +767,40 @@ h3 {
         width: 10vw;
         height: 10vw;
     }
+}
 
+@media (max-width: 1180px) {
+    .about-club {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        align-self: center;
+    }
+    .about-title{
+        font-size: 5vh;
+    }
+    .about-text {
+        border-radius: 20px;
+        width: 80vw;
+        padding: 10px 13px;
+        font-size: 2vh;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .glow-wrapper {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 70px;
+    }
+
+    .glow-wrapper img {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2vh;
+        width: 60vw;
+        height: 60vw;
+    }
 }

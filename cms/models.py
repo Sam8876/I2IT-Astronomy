@@ -84,14 +84,6 @@ class BlogPage(Page):
 class AstroCalendarPage(Page, ClusterableModel):
     template = "cms/astrocalendar_page.html"
 
-    # background_image = models.ForeignKey(
-    #     'wagtailimages.Image',  # 👈 Correct usage in Wagtail 7
-    #     null=True,
-    #     blank=True,
-    #     on_delete=models.SET_NULL,
-    #     related_name='+'
-    # )
-
     content_panels = Page.content_panels + [
         # FieldPanel('background_image'),  # This works in Wagtail 7
         InlinePanel('events', label="Astronomical Events"),
