@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" shrink-to-fit=no">
-  <title>{% block title %}Astronomy Club{% endblock %}</title>
+  <title>{% block title %}I2IT Astronomy Club{% endblock %}</title>
     {% block meta %}{% endblock %}
   <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2.0.1">
@@ -13,6 +13,7 @@
         margin: 0;
         padding: 0;
         background-color: #1b1b1b;
+        {#background-image: url("static/images/starry.jpg");#}
     }
 
     /* Prevent scroll during loading */
@@ -66,8 +67,9 @@
       <div class="line3"></div>
     </div>
     <ul class="nav-links">
-      <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="/projects/">Club Projects</a></li>
       <li><a href="/about/">About</a></li>
+        <li><a id="homebtn" href="{% url 'home' %}">Home</a></li>
       <li><a href="/posts/">Posts</a></li>
         <li><a href="/astro-calender/">Astro-Calender</a></li>
     </ul>
@@ -79,6 +81,7 @@
       <li><a href="/about/">About</a></li>
       <li><a href="/posts/">Posts</a></li>
         <li><a href="/astro-calender/">Astro-Calender</a></li>
+        <li><a href="/projects/">Club Projects</a></li>
     </ul>
   </div>
     {% block content %}
