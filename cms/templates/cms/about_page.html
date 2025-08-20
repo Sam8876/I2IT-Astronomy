@@ -4,32 +4,37 @@
 
 
 {% block content %}
+    <style> {# Set Background  #}
+        body {
+            background-image: url("{% static 'images/starry.jpg' %}");
+            object-fit: cover;
+            margin-bottom: -10px;
+        }
+    </style>
+
     <div id="loadergif">
         <img src="{% static 'images/loader.gif' %}" alt="Loading...">
     </div>
-  <section class="about-club">
-    <div class="glow-wrapper"><img  class="about-earth" src="/static/images/earth.jpg" alt="Earth Africa"/></div>
-    <div class="about-text"><h1 class="about-title">INTRODUCTION TO CLUB</h1>
-    {{ page.club_description|richtext }}</div>
-  </section>
 
-{#  <section class="about-hero">#}
-{#    <img class="about-earth" src="images/earth.jpg" alt="Earth Africa" />#}
-{#    <div class="intro-card">#}
-{#      <h2>Introduction to Club</h2>#}
-{#      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>#}
-{#      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>#}
-{#    </div>#}
-{#  </section>#}
+    <section class="about-club">
+        <div class="glow-wrapper"><img class="about-earth" src="{% static 'images/earth.jpg' %}" alt="Earth Africa"/></div>
+        <div class="about-text"><h1 class="about-title">INTRODUCTION TO CLUB</h1>
+            {{ page.club_description|richtext }}</div>
+    </section>
+
     <div class="departments">
-    {% for block in page.departments %}
-        {% include_block block %}
-    {% endfor %}
+        {% for block in page.departments %}
+            {% include_block block %}
+        {% endfor %}
     </div>
 
-<section class="credits">
-  <h2>Credits</h2>
-  <p>Created by Sameer Patil</p>
-  <p>&copy; {{ now.year }} International Institute of Information Technology</p>
-</section>
+{#    <section class="credits">#}
+{#        <h2>Credits</h2>#}
+{#        <p>Created by Sameer Patil</p>#}
+{#        <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
+{#    </section>#}
+    <script>
+        let element = document.getElementById("aboutbtn");
+        element.style.border = "2px solid rgb(61, 106, 255)";
+    </script>
 {% endblock %}

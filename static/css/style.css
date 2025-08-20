@@ -133,8 +133,6 @@ h3 {
     transition: all 0.2s ease-in;
 }
 
-#homebtn { border: 2px solid rgb(61, 106, 255); }
-
 .nav-links a:hover {
     border: 2px solid rgb(61, 106, 255);
     background: rgb(61, 106, 255);
@@ -261,11 +259,25 @@ h3 {
 }
 
 /* Posts Main Page */
+.section {
+    width: 100vw;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
 .container {
-    padding-top: 7vh;
+    justify-items: center;
+    justify-content: center;
+    margin: 10vh auto;
+    padding: 0 30px 5vh 30px;
     width: 90%;
-    margin: auto;
     color: white;
+    background-color: rgba(27,27,27,0.8);
+    border: 2px transparent solid;
+    border-radius: 50px;
+    position: absolute;
 }
 
 .index-title {
@@ -274,6 +286,8 @@ h3 {
     font-weight: 600;
     font-size: 4rem;
 }
+
+
 
 .blog-grid {
     display: grid;
@@ -408,7 +422,7 @@ h3 {
 .post-content-wrapper {
     color: white;
     max-width: 70%;
-    margin: 1rem auto;
+    margin: 3vh auto;
     padding: 0 2.5rem 1rem;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -584,7 +598,7 @@ h3 {
 
 .glow-wrapper img {
     width: 30vw;
-    height: 30vw;  /* keep 1:1 ratio */
+    height: 30vw; /* keep 1:1 ratio */
     border-radius: 50%;
     border: 3px solid white;
     box-shadow: 0 0 15px #000, 0 0 30px #0ff, 0 0 45px #000;
@@ -593,12 +607,13 @@ h3 {
 }
 
 .about-text {
+    background-color: #1b1b1b;
     margin-top: 2vh;
     flex: 50%;
-    border-radius: 50px;
-    box-shadow: 0 0 13px white;
+    border-radius: 45px;
+    /*box-shadow: 0 0 13px white;*/
     padding: 0 2vw 2vh 2vw;
-    border: 2px solid white;
+    border: 2px solid transparent;
 }
 
 .about-club {
@@ -663,13 +678,13 @@ h3 {
 }
 
 .member-card:hover {
-    box-shadow:  0 0 20px #8615a8;
+    box-shadow: 0 0 20px #8615a8;
 }
 
 /* Image styled as a clean circle */
 .member-card img {
-    width: 140px;
-    height: 140px;
+    width: 190px;
+    height: 190px;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid rgba(255, 255, 255, 0.4);
@@ -712,6 +727,26 @@ h3 {
 /* Responsive */
 @media (max-width: 1180px) {
 
+    .section {
+        width: 100%;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .container {
+        width: 90%;
+        padding: 0;
+        margin: auto;
+        background-color: transparent;
+    }
+
+    .member-card img {
+        width: 130px;
+        height: 130px;
+    }
+
     .about-title {
         font-size: 5vh;
         margin-top: 2vh;
@@ -736,9 +771,6 @@ h3 {
         margin-top: 0;
     }
 
-    .container {
-        padding-top: 5vh;
-    }
 
     .overlay p {
         font-size: 5vh;
@@ -779,9 +811,11 @@ h3 {
         align-content: center;
         align-self: center;
     }
-    .about-title{
+
+    .about-title {
         font-size: 5vh;
     }
+
     .about-text {
         border-radius: 20px;
         width: 80vw;

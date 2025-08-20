@@ -86,16 +86,14 @@ h3 {
 .nav-links {
     align-content: center;
     align-items: center;
+    margin-right: 10px;
     /*margin-left: 2vw;*/
     list-style: none;
     display: flex;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     padding: 1.5rem;
     border-radius: 10px;
-}
-
-.nav-links li {
-    margin: 0 0.5rem;
+    gap: 0.7rem;
 }
 
 .nav-links li a {
@@ -113,6 +111,47 @@ h3 {
     height: 3px;
     background: #fff;
     margin: 5px;
+}
+
+/* Nav Buttons */
+
+.nav-links a {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 2px solid transparent;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+#homebtn {
+    border: 2px solid rgb(61, 106, 255);
+}
+
+.nav-links a:hover {
+    border: 2px solid rgb(61, 106, 255);
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+
+.nav-links a:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
 }
 
 
@@ -489,43 +528,6 @@ h3 {
 }
 
 
-/* Nav Buttons */
-
-.nav-links a {
-    position: relative;
-    padding: 10px 20px;
-    border-radius: 7px;
-    border: 1px solid rgb(61, 106, 255);
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 2px;
-    background: transparent;
-    color: #fff;
-    overflow: hidden;
-    box-shadow: 0 0 0 0 transparent;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-}
-
-.nav-links a:hover {
-    background: rgb(61, 106, 255);
-    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-}
-
-
-.nav-links a:active {
-    box-shadow: 0 0 0 0 transparent;
-    -webkit-transition: box-shadow 0.2s ease-in;
-    -moz-transition: box-shadow 0.2s ease-in;
-    transition: box-shadow 0.2s ease-in;
-}
-
-
 /* View all Button */
 .viewall {
     position: absolute;
@@ -583,25 +585,27 @@ h3 {
 }
 
 .glow-wrapper img {
-    width: 30vw;   /* adjust as needed */
-    height: 30vw;  /* keep 1:1 ratio */
-    border-radius: 50%; /* make circle */
-    border: 3px solid white; /* solid border */
-    box-shadow: 0 0 15px #000, 0 0 30px #0ff, 0 0 45px #000; /* glowing effect */
-    object-fit: cover; /* crop image neatly */
+    width: 30vw;
+    height: 30vw; /* keep 1:1 ratio */
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 15px #000, 0 0 30px #0ff, 0 0 45px #000;
+    object-fit: cover;
     display: block;
 }
 
 .about-text {
+    background-color: #1b1b1b;
     margin-top: 2vh;
     flex: 50%;
     border-radius: 50px;
     box-shadow: 0 0 13px white;
     padding: 0 2vw 2vh 2vw;
+    border: 2px solid white;
 }
 
 .about-club {
-    padding-top: 10vh;
+    padding-top: 12vh;
     padding-left: 5vw;
     padding-right: 5vw;
     color: white;
@@ -612,17 +616,19 @@ h3 {
     text-align: left;
     display: flex;
     gap: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 8vh;
+}
+
+.departments {
+    width: 100%;
 }
 
 .department-carousel {
     margin: 1rem auto;
     padding: 2rem 6vw;
     color: white;
-    /*box-shadow: 2px 2px 2px black inset, -2px -2px 2px black inset;*/
     width: 80%;
-    /*border-radius: 15px;*/
-
+    border-radius: 50px;
 }
 
 .department-carousel h2 {
@@ -648,18 +654,19 @@ h3 {
 /* Each card in carousel */
 .member-card {
     scroll-snap-align: center;
+    border: 2px solid white;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
     width: 200px;
     flex: 0 0 auto;
     backdrop-filter: blur(4px);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .member-card:hover {
-    box-shadow:  0 0 15px #00a885;
+    box-shadow: 0 0 20px #8615a8;
 }
 
 /* Image styled as a clean circle */
@@ -679,11 +686,12 @@ h3 {
     margin: 0;
     font-weight: 600;
     color: white;
+    line-height: 1.6;
 }
 
 .member-card p {
     font-size: 0.9rem;
-    margin: 0;
+    margin: 0.7rem 0;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -691,7 +699,6 @@ h3 {
     text-align: center;
     margin: 1rem;
     flex: 0 0 auto;
-    width: 200px;
 }
 
 .department-carousel .carousel {
@@ -705,9 +712,8 @@ h3 {
     scroll-snap-align: center;
 }
 
-
 /* Responsive */
-@media (max-width: 541px) {
+@media (max-width: 1180px) {
 
     .about-title {
         font-size: 5vh;
@@ -727,9 +733,6 @@ h3 {
         padding: 2rem 3vw;
         width: 90%;
     }
-}
-
-@media (max-width: 768px) {
 
     .navbar {
         justify-content: left;
@@ -767,9 +770,11 @@ h3 {
         width: 10vw;
         height: 10vw;
     }
-}
 
-@media (max-width: 1180px) {
+    .about-text {
+        margin-left: -9px;
+    }
+
     .about-club {
         display: block;
         justify-content: center;
@@ -777,16 +782,18 @@ h3 {
         align-content: center;
         align-self: center;
     }
-    .about-title{
+
+    .about-title {
         font-size: 5vh;
     }
+
     .about-text {
         border-radius: 20px;
         width: 80vw;
-        padding: 10px 13px;
+        padding: 10px 17px;
         font-size: 2vh;
-        margin-left: auto;
-        margin-right: auto;
+        border: 3px solid white;
+        box-shadow: none;
     }
 
     .glow-wrapper {
@@ -802,5 +809,11 @@ h3 {
         margin-top: 2vh;
         width: 60vw;
         height: 60vw;
+    }
+
+    .member-card {
+        width: 150px;
+        line-height: 1.5;
+        margin: 1rem;
     }
 }

@@ -350,13 +350,12 @@
             z-index: -2;
         }
 
-
     </style>
 
 
     <section class="hero">
         <video autoplay muted loop class="hero-video">
-            <source src="{% static 'videos/videoplayback_1.mp4' %}" type="video/mp4">
+            <source src="{% static 'videos/deep_space_2.mp4' %}" type="video/mp4">
         </video>
         <div class="overlay overlay_text">
         </div>
@@ -395,6 +394,7 @@
     <!-- FullCalendar -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script>
+
         window.onbeforeunload = function () {
             window.scrollTo(0, 0);
         };
@@ -484,5 +484,9 @@
                 modal.style.display = "none";
             }
         };
+
+        let element = document.getElementById("calenderbtn");
+        element.style.border = "2px solid rgb(61, 106, 255)";
     </script>
+
 {% endblock %}

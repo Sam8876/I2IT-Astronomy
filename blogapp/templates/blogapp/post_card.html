@@ -1,0 +1,12 @@
+<article class="card">
+  <a href="{% url 'post_detail' slug=post.slug %}">
+    {% if post.image %}
+      <img src="{{ post.image.url }}" alt="{{ post.title }}">
+    {% endif %}
+    <div class="card-body">
+      <h3 class="card-title">{{ post.title }}</h3>
+      <p class="card-text">{{ post.excerpt|default:post.content|truncatechars:100 }}</p>
+      <span class="card-meta">{{ post.published_at|date:"M d, Y" }}</span>
+    </div>
+  </a>
+</article>

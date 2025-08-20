@@ -26,6 +26,13 @@
 
 
 {% block content %}
+    <style> {# Set Background #}
+        body, html {
+            background-image: url("{% static 'images/starry.jpg' %}");
+            object-fit: cover;
+            {#margin-bottom: -10px;#}
+        }
+    </style>
     <!-- Loader -->
     <div id="loadergif">
         <img src="{% static 'images/loader.gif' %}" alt="Loading...">
@@ -47,7 +54,7 @@
             </div>
         {% endif %}
 
-        <div class="post-content-wrapper">
+        <div class="post-content-wrapper" style="background-color: #1b1b1b;">
             <div class="post-body">
                 {% for block in page.body %}
                     {% if block.block_type == "button" %}
@@ -74,13 +81,16 @@
 
     </article>
     <section class="credits">
-        <h2>Credits</h2>
-        <p>Created by Sameer Patil</p>
-        <p>&copy; {{ now.year }} International Institute of Information Technology</p>
+{#        <h2>Credits</h2>#}
+{#        <p></p>#}
+        <p style="font-size: 2vh;">&copy; {{ now.year }} International Institute of Information Technology</p>
     </section>
 
 
     <script>
+        let element = document.getElementById("postbtn");
+        element.style.border = "2px solid rgb(61, 106, 255)";
+
         function scrollToContent() {
             window.scrollTo({
                 top: window.innerHeight - 70,

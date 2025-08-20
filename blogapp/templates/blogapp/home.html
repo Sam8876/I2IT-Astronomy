@@ -1,17 +1,16 @@
 {% extends 'blogapp/base.html' %}
-
+{% load wagtailcore_tags wagtailimages_tags %}
 {% load static %}
 
 {% block content %}
     <section class="hero">
-        {% comment %}
-            <video autoplay muted loop class="hero-video">
-                <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
-            </video>  {% endcomment %}
-        <img srcset="{% static 'images/bg.jpg' %} 3840w,
-               {% static 'images/bg.jpg' %} 2560w,
-               {% static 'images/bgfhd.jpg' %} 1920w"
-             src="{% static 'images/bg.webp' %}" type="image/webp" class="hero-video" alt="BG">
+            <video autoplay muted loop width="90vw" preload="auto" class="hero-video">
+                <source src="{% static 'videos/earthview_fhd.mp4' %}" type="video/mp4">
+            </video>
+{#        <img srcset="{% static 'images/bg.jpg' %} 3840w,#}
+{#               {% static 'images/bg.jpg' %} 2560w,#}
+{#               {% static 'images/bgfhd.jpg' %} 1920w"#}
+{#             src="{% static 'images/bg.webp' %}" type="image/webp" class="hero-video" alt="BG">#}
         <div class="overlay">
             <p class="webtitle">Welcome to I2IT Astronomy Club</p>
         </div>
@@ -27,12 +26,24 @@
         </div>
     </section>
 
+    {# Blogs-------   #}
     <section class="hero">
         <video autoplay muted loop class="hero-video">
             <source src="{% static 'videos/Videoplayback 1.mp4' %}" type="video/mp4">
         </video>
         <div class="overlay overlay_text">
-            <p>OUR BLOG PAGE</p>
+            <p>OUR BLOG PAGE</p><br>
+            <section class="container latest-posts">
+              <h2>Latest Posts</h2>
+              <div class="card-grid">
+                {% for post in latest_posts %}
+{#                  {% include "blogapp/post_card.html" with post=post %}#}
+                {% empty %}
+                  <p>No posts available yet.</p>
+                {% endfor %}
+              </div>
+            </section>
+
             <a class="viewall" href="/posts/"><span>LAUNCH</span></a>
         </div>
     </section>
@@ -44,6 +55,9 @@
     {#  <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
     {#</section>#}
     <script>
+        let element = document.getElementById("homebtn");
+        element.style.border = "2px solid rgb(61, 106, 255)";
+
         window.onbeforeunload = function () {
             window.scrollTo(0, 0);
         };

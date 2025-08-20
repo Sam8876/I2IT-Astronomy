@@ -2,18 +2,18 @@
 {% load wagtailimages_tags static %}
 
 <div class="department-carousel">
-  <h2>{{ self.department_name }}</h2>
-  <div class="carousel">
-    {% for member in self.members %}
-        <div class="member-card">
-            {% if member.photo %}
-                {% image member.photo fill-200x200 class="member-img" alt=member.name %}
-            {% else %}
-                <img src="{% static 'images/default-user.jpg' %}" alt="No Photo">
-            {% endif %}
-            <h3>{{ member.name }}</h3>
-            <p>{{ member.title }}</p>
-        </div>
-    {% endfor %}
-  </div>
+    <h2>{{ self.department_name }}</h2>
+    <div class="carousel">
+        {% for member in self.members %}
+            <div class="member-card">
+                {% if member.photo %}
+                    {% image member.photo fill-200x200 class="member-img" alt=member.name %}
+                {% else %}
+                    <img src="{% static 'images/default-user.jpg' %}" alt="No Photo">
+                {% endif %}
+                <h3>{{ member.name }}</h3>
+                <p>{{ member.title }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </div>
