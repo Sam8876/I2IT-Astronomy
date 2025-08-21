@@ -6,19 +6,19 @@
 {% block content %}
     <style> {# Set Background  #}
         body {
-            background-image: url("{% static 'images/starry.jpg' %}");
+            background-image: url("{% static 'images/starry2.jpg' %}");
             object-fit: cover;
             margin-bottom: -10px;
         }
     </style>
 
     <div id="loadergif">
-        <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+        <img src="{% static 'images/loader_compressed.gif' %}" alt="Loading...">
     </div>
 
     <section class="about-club">
         <div class="glow-wrapper"><img class="about-earth" src="{% static 'images/earth.jpg' %}" alt="Earth Africa"/></div>
-        <div class="about-text"><h1 class="about-title">INTRODUCTION TO CLUB</h1>
+        <div class="about-text"><h1 class="about-title">Introduction to Club</h1>
             {{ page.club_description|richtext }}</div>
     </section>
 

@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="gallery-wrapper">
+    <h1 style="color: white; font-family: Montserrat,sans-serif; font-size: 4.5vh;">Our Memories ❤️</h1>
     {% for category in page.categories.all %}
         <h2 class="category-title">{{ category.title }}</h2>
 
@@ -40,19 +41,21 @@ body, html {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 90vw;
-    max-width: 1400px;
+    width: 80vw;
+    {#max-width: 1400px;#}
     overflow: hidden;
     text-align: center;
     padding: 15px 3vw 6vh 3vw;
     border-radius: 25px;
-    background-color: rgba(27,27,27,0.9);
+    background-color: rgba(27,27,27,0.8);
 }
 
 .category-title {
+    font-family: Montserrat, sans-serif;
     font-size: 2vw;
     color: #fff;
-    margin: 2rem 0 1rem;
+    text-shadow: #00a885 0 0 20px;
+    margin: 2rem 0 -20px;
     text-align: left;
 }
 
@@ -62,6 +65,9 @@ body, html {
     width: 100%;
     overflow: hidden;
     margin-bottom: 2rem;
+    height: 400px;
+    align-content: center;
+
 }
 
 .carousel-track {
@@ -94,11 +100,12 @@ body, html {
 
 /* Hover effect */
 .carousel-item:hover {
-    transform: scale(1.08);
-    z-index: 5;
+    transform: scale(1.2);
+    z-index: 10;
+    overflow: visible;
 }
 
-.carousel-item:hover img {
+.carousel-item img {
     filter: brightness(1);
 }
 
@@ -112,10 +119,22 @@ body, html {
 @media (max-width: 768px) {
     .gallery-wrapper {
         width: 95vw;
-        padding: 10px 2vw 4vh;
+        padding: 10px 2vw 0;
         border-radius: 15px;
+        background-color: transparent;
     }
-
+    .carousel-container {
+        margin-bottom: -5vh;
+    }
+    .category-title {
+        margin-bottom: -9vh;
+    }
+    .carousel-container:hover .carousel-track {
+        animation-play-state: running;
+    }
+    .carousel-item {
+        filter: brightness(1);
+    }
     .carousel-item img {
         width: 85vw;
         min-width: 200px;
@@ -123,8 +142,7 @@ body, html {
     }
 
     .category-title {
-        font-size: 1.2rem;
-        margin: 1.5rem 0 0.5rem;
+        font-size: 2vh;
     }
 }
 
@@ -135,7 +153,7 @@ body, html {
     }
 
     .category-title {
-        font-size: 1rem;
+        font-size: 2vh;
     }
 }
 </style>

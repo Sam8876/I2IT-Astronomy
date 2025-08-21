@@ -13,7 +13,6 @@
             margin: 0;
             padding: 0;
             background-color: #1b1b1b;
-
         }
 
         /* Prevent scroll during loading */
@@ -51,14 +50,14 @@
 
 <body {% if show_loader %}class="noscroll"{% endif %}> <!-- scroll disabled initially -->
 <!-- Loading Screen -->
-{% if show_loader %}
-    <div id="loader">
-        <video id="loadingVideo" autoplay muted playsinline>
-            <source src="{% static 'videos/launch_new.mp4' %}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-{% endif %}
+{#{% if show_loader %}#}
+{#    <div id="loader">#}
+{#        <video id="loadingVideo" autoplay muted playsinline>#}
+{#            <source src="{% static 'videos/launch_new.mp4' %}" type="video/mp4">#}
+{#            Your browser does not support the video tag.#}
+{#        </video>#}
+{#    </div>#}
+{#{% endif %}#}
 <!-- Main Screen -->
 <div id="main-content">
     <nav class="navbar">
@@ -68,9 +67,9 @@
             <div class="line3"></div>
         </div>
         <ul class="nav-links">
+            <li><a id="homebtn" href="{% url 'home' %}">Home</a></li>
             <li><a id="gallerybtn" href="/gallery/">Gallery</a></li>
             <li><a id="aboutbtn" href="/about/">About</a></li>
-            <li><a id="homebtn" href="{% url 'home' %}">Home</a></li>
             <li><a id="postbtn" href="/posts/">Posts</a></li>
             <li><a id="calenderbtn" href="/astro-calender/">Astro-Calender</a></li>
         </ul>
