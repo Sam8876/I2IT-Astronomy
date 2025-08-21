@@ -10,6 +10,7 @@ from wagtail.fields import RichTextField
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
 # from modelcluster.fields import ParentalManyToManyField
+from wagtail.images.models import Image
 
 
 class BlogIndexPage(Page):
@@ -83,44 +84,69 @@ class BlogPage(Page):
     subpage_types: list[str] = []  # can’t create pages beneath a post
 
 
-class AstroCalendarPage(Page, ClusterableModel):
-    template = "cms/astrocalendar_page.html"
 
+class AstroEventPage(Page):
+    template = "cms/astro_event_page.html"
+    """Main page for Astro Events"""
     content_panels = Page.content_panels + [
-        # FieldPanel('background_image'),  # This works in Wagtail 7
-        InlinePanel('events', label="Astronomical Events"),
+        InlinePanel('carousel_images', label="Carousel Images"),
     ]
+    subpage_types = []  # no subpages allowed
+    max_count = 1  # only 1 page
 
-    def get_context(self, request):
-        context = super().get_context(request)
-        context['events'] = self.events.all()
-        return context
 
-class AstroEvent(models.Model):
-    page = ParentalKey(AstroCalendarPage, related_name='events', on_delete=models.CASCADE)
-    title = models.CharField(max_length=255)
-    date = models.DateField()
-    description = RichTextField()
-    event_type = models.CharField(
-        max_length=50,
-        choices=[
-            ('eclipse', 'Eclipse'),
-            ('meteor', 'Meteor Shower'),
-            ('planetary', 'Planetary'),
-            ('other', 'Other')
-        ],
-        default='other'
-    )
+class AstroEventImage(models.Model):
+    """Carousel image linked to AstroEventPage"""
+    page = ParentalKey(AstroEventPage, related_name="carousel_images", on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name="+")
+    caption = models.CharField(max_length=255, blank=True)
 
     panels = [
-        FieldPanel('title'),
-        FieldPanel('date'),
-        FieldPanel('description'),
-        FieldPanel('event_type'),
+        FieldPanel("image"),
+        FieldPanel("caption"),
     ]
 
-    def __str__(self):
-        return f"{self.title} on {self.date}"
+    class Meta:
+        ordering = ["id"]
+
+# class AstroCalendarPage(Page, ClusterableModel):
+#
+#
+#     content_panels = Page.content_panels + [
+#         # FieldPanel('background_image'),  # This works in Wagtail 7
+#         InlinePanel('events', label="Astronomical Events"),
+#     ]
+#
+#     def get_context(self, request):
+#         context = super().get_context(request)
+#         context['events'] = self.events.all()
+#         return context
+#
+# class AstroEvent(models.Model):
+#     page = ParentalKey(AstroCalendarPage, related_name='events', on_delete=models.CASCADE)
+#     title = models.CharField(max_length=255)
+#     date = models.DateField()
+#     description = RichTextField()
+#     event_type = models.CharField(
+#         max_length=50,
+#         choices=[
+#             ('eclipse', 'Eclipse'),
+#             ('meteor', 'Meteor Shower'),
+#             ('planetary', 'Planetary'),
+#             ('other', 'Other')
+#         ],
+#         default='other'
+#     )
+#
+#     panels = [
+#         FieldPanel('title'),
+#         FieldPanel('date'),
+#         FieldPanel('description'),
+#         FieldPanel('event_type'),
+#     ]
+#
+#     def __str__(self):
+#         return f"{self.title} on {self.date}"
 
 class MemberBlock(blocks.StructBlock):
     name = blocks.CharBlock(required=True)

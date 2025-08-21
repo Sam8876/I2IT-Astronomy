@@ -54,7 +54,7 @@ a:hover {
 h1,
 h2,
 h3 {
-    font-family: 'Agency FB Bold', sans-serif;
+    font-family: Hanken-Grotesk, sans-serif;
     font-weight: bold;
     line-height: 6vh;
 }
@@ -69,7 +69,7 @@ h3 {
 
 /* Navbar */
 .navbar {
-    margin-top: -1.8vh;
+    margin-top: -1.3vh;
     display: flex;
     /*justify-content: space-between;*/
     align-items: center;
@@ -77,7 +77,6 @@ h3 {
     padding: 1rem;
     /*background: rgba(0, 0, 0, 0.5);*/
     /* background-image: linear-gradient(rgba(255, 255, 255, 0.5), transparent); */
-    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);*/
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -92,7 +91,9 @@ h3 {
     display: flex;
     background: rgba(0, 0, 0, 0.7);
     padding: 1.5rem;
+    padding-bottom: 1.6rem;
     border-radius: 10px;
+    box-shadow: 0 0 5px white;
     gap: 0.7rem;
 }
 
@@ -232,15 +233,19 @@ h3 {
     background: rgba(0, 0, 0, 0.2);
 }
 
+.webtitle {
+    font-size: 4vw;
+}
+
 .overlay p {
-    word-break: break-all;
-    font-family: 'Agency FB Bold', sans-serif;
-    font-weight: bold;
-    font-size: 5vw;
-    text-shadow: white 1px 1px;
+    font-family: Hanken-Grotesk, sans-serif;
+    font-weight: 800;
+    font-size: 4vw;
+    /*text-shadow: rgba(255,255,255,0.3) 3px 3px;*/
     color: white;
-    line-height: 5vh;
-    margin-top: 10px;
+    line-height: 7vh;
+    margin-right: 45vw;
+    margin-top: -10px;
 }
 
 
@@ -267,6 +272,8 @@ h3 {
     align-items: center;
     justify-items: center;
 }
+
+
 
 .container {
     justify-items: center;
@@ -299,9 +306,9 @@ h3 {
 .card {
     border: 1px solid transparent;
     box-shadow: rgba(45, 35, 66, 0.4) 0 2px 10px, rgba(45, 35, 66, 0.3) 0 7px 13px 10px, #7f1fcb 0 -3px 0 inset;
-    border-radius: 12px;
+    border-radius: 20px;
     overflow: hidden;
-    background: #1b1b1b;
+    background: rgba(0, 0, 0, 0.7);
     transition: box-shadow 0.3s ease;
 }
 
@@ -309,10 +316,20 @@ h3 {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5), -1px -1px 5px rgba(0, 0, 0, 0.5);
 }
 
+.card-image {
+    justify-self: center;
+    width: 94%;
+    margin-top: 3%;
+    border-radius: 20px;
+}
+
 .card-image img {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 20px;
+    justify-self: center;
+    filter: brightness(1.2);
 }
 
 .card-content {
@@ -405,10 +422,12 @@ h3 {
 }
 
 .hero-overlay .post-title {
-    font-size: 7vh;
-    font-family: "Agency FB", sans-serif;
+    font-size: 6vh;
+    font-family: Hanken-Grotesk, sans-serif;
+    text-shadow: #1b1b1b 1px 1px 7px;
     font-weight: bold;
     margin-bottom: 1rem;
+    word-break: auto-phrase;
 }
 
 .hero-overlay .post-date {
@@ -436,6 +455,8 @@ h3 {
     color: white;
 }
 
+
+
 .back-link {
     text-align: left;
     margin-top: 2rem;
@@ -453,19 +474,26 @@ h3 {
 
 .post-body p {
     font-family: "Montserrat", sans-serif;
-    font-size: 2vh;
+    font-size: 1.7vh;
     margin-bottom: 1.25rem;
     line-height: 1.8;
 }
 
+.post-body li {
+    font-size: 2vh;
+    line-height: 1.8;
+}
+
 .post-body h2, .post-body h3 {
-    font-size: 1.8rem;
+    font-size: 3.5vh;
     margin: 2rem 0 1rem;
 }
 
+
+
 .post-body blockquote {
     font-family: "Baskervville-italic", sans-serif;
-    font-size: 2rem;
+    font-size: 2vh;
     font-weight: 600;
     font-style: italic;
     color: white;
@@ -581,9 +609,9 @@ h3 {
 
 .about-title {
     font-size: 3vw;
-    font-family: 'Agency FB', sans-serif;
+    font-family: 'Hanken-Grotesk', sans-serif;
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: left;
     color: white;
 }
@@ -617,17 +645,17 @@ h3 {
 }
 
 .about-club {
-    padding-top: 12vh;
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding-top: 14vh;
+    padding-left: 6vw;
+    padding-right: 6vw;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     line-height: 1.7;
     max-width: 85vw;
     margin: auto;
     text-align: left;
     display: flex;
-    gap: 10px;
+    gap: 0;
     margin-bottom: 8vh;
 }
 
@@ -702,8 +730,9 @@ h3 {
 }
 
 .member-card p {
-    font-size: 0.9rem;
-    margin: 0.7rem 0;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    font-weight: 600;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -731,7 +760,7 @@ h3 {
         font-family: 'Agency FB Bold', sans-serif;
         font-weight: bold;
         font-size: 5vw;
-        text-shadow: white 1px 1px;
+        text-shadow: rgba(255, 255, 255, 0.7) 1px 1px;
         color: white;
         line-height: 5vh;
         margin-top: 10px;
@@ -781,6 +810,9 @@ h3 {
         margin-top: 0;
     }
 
+    .webtitle {
+        font-size: 4vh;
+    }
 
     .overlay p {
         font-size: 5vh;
@@ -822,9 +854,6 @@ h3 {
         align-self: center;
     }
 
-    .about-title {
-        font-size: 5vh;
-    }
 
     .about-text {
         border-radius: 20px;

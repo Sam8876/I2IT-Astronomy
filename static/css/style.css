@@ -273,6 +273,8 @@ h3 {
     justify-items: center;
 }
 
+
+
 .container {
     justify-items: center;
     justify-content: center;
@@ -453,6 +455,8 @@ h3 {
     color: white;
 }
 
+
+
 .back-link {
     text-align: left;
     margin-top: 2rem;
@@ -470,19 +474,26 @@ h3 {
 
 .post-body p {
     font-family: "Montserrat", sans-serif;
-    font-size: 2vh;
+    font-size: 1.7vh;
     margin-bottom: 1.25rem;
     line-height: 1.8;
 }
 
+.post-body li {
+    font-size: 2vh;
+    line-height: 1.8;
+}
+
 .post-body h2, .post-body h3 {
-    font-size: 1.8rem;
+    font-size: 3.5vh;
     margin: 2rem 0 1rem;
 }
 
+
+
 .post-body blockquote {
     font-family: "Baskervville-italic", sans-serif;
-    font-size: 2rem;
+    font-size: 2vh;
     font-weight: 600;
     font-style: italic;
     color: white;

@@ -5,12 +5,8 @@
 {% block content %}
     <section class="hero">
             <video autoplay muted loop width="90vw" preload="auto" class="hero-video">
-                <source src="{% static 'videos/earthview.mp4' %}" type="video/mp4">
+                <source src="{% static 'videos/Earthview_2.mp4' %}" type="video/mp4">
             </video>
-{#        <img srcset="{% static 'images/bg.jpg' %} 3840w,#}
-{#               {% static 'images/bg.jpg' %} 2560w,#}
-{#               {% static 'images/bgfhd.jpg' %} 1920w"#}
-{#             src="{% static 'images/bg.webp' %}" type="image/webp" class="hero-video" alt="BG">#}
         <div class="overlay">
             <p>WELCOME TO<br><font class="webtitle">I2IT ASTRONOMY CLUB</font></p>
         </div>
@@ -22,7 +18,6 @@
         </video>
         <div class="overlay overlay_text">
             <p>GALLERY</p>
-
         </div>
     </section>
 
@@ -48,12 +43,12 @@
         </div>
     </section>
 
-    {##}
-    {#<section class="credits">#}
-    {#  <h2>Credits</h2>#}
-    {#  <p>Created by the Sameer Patil</p>#}
-    {#  <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
-    {#</section>#}
+{##}
+{#    <section class="credits">#}
+{#      <h2>Credits</h2>#}
+{#      <p>Created by the Sameer Patil</p>#}
+{#      <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
+{#    </section>#}
     <script>
         let element = document.getElementById("homebtn");
         element.style.border = "2px solid rgb(61, 106, 255)";

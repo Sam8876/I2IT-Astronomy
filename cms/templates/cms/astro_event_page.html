@@ -1,0 +1,183 @@
+{% extends "blogapp/base.html" %}
+{% load wagtailimages_tags %}
+{% load static %}
+{% block content %}
+    <!-- Loader -->
+    <div id="loadergif">
+        <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+    </div>
+
+    <section class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="{% static 'videos/deep_space_2_compressed.mp4' %}" type="video/mp4">
+        </video>
+        <div class="overlay overlay_text">
+        </div>
+    </section>
+
+
+    <div class="astro-events-container">
+        <h1 class="astro-events-title">Astro-Events</h1>
+
+        <div class="carousel-wrapper">
+            <!-- Arrows -->
+            <button class="carousel-arrow left-arrow">&#10094;</button>
+            <button class="carousel-arrow right-arrow">&#10095;</button>
+
+            <!-- Carousel images -->
+            <div class="carousel">
+                {% for item in page.carousel_images.all %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        {% image item.image original as img %}
+                        <img src="{{ img.url }}" alt="{{ item.caption }}">
+                        {% if item.caption %}
+                            <p class="caption">{{ item.caption }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .hero {
+            height: 120vh;
+            position: absolute;
+            z-index: -2;
+        }
+
+        .astro-events-container {
+            width: 100%;
+            justify-items: center;
+            margin-top: 5vh;
+            padding: 2rem 0;
+            position: absolute;
+            text-align: center;
+        }
+
+        .astro-events-title {
+            font-size: 5vh;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: white;
+            text-shadow: white 1px 1px 5px;
+        }
+
+        /* Carousel desktop */
+        .carousel-wrapper {
+            position: relative;
+            width: 80vw;
+            margin: 0 auto;
+            overflow: visible; /* allow arrows outside */
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-item.active {
+            display: flex;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        /* Arrows outside images */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-70%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            font-size: 2rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s;
+            z-index: 10;
+            {#width: 3vw;#}
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .left-arrow {
+            left: -80px;
+        }
+
+        /* outside left */
+        .right-arrow {
+            right: -80px;
+        }
+
+        /* outside right */
+
+        .caption {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Mobile layout */
+        @media screen and (max-width: 768px) {
+            .carousel-wrapper, .carousel {
+                display: block;
+                width: 98vw;
+            }
+
+            .carousel-item {
+                display: block !important;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .carousel-arrow {
+                display: none; /* hide arrows on mobile */
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const items = document.querySelectorAll(".carousel-item");
+            const leftArrow = document.querySelector(".left-arrow");
+            const rightArrow = document.querySelector(".right-arrow");
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                items.forEach((item, i) => {
+                    item.classList.toggle("active", i === index);
+                });
+            }
+
+            // Desktop arrow events
+            if (leftArrow && rightArrow) {
+                leftArrow.addEventListener("click", () => {
+                    currentIndex = (currentIndex - 1 + items.length) % items.length;
+                    showSlide(currentIndex);
+                });
+
+                rightArrow.addEventListener("click", () => {
+                    currentIndex = (currentIndex + 1) % items.length;
+                    showSlide(currentIndex);
+                });
+            }
+        });
+
+        let element = document.getElementById("calenderbtn");
+        element.style.border = "2px solid rgb(61, 106, 255)";
+    </script>
+{% endblock %}
