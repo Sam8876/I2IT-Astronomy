@@ -3,8 +3,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'your-secret-key'
-DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1' ,'sampat8876.pythonanywhere.com']
+DEBUG = False
+ALLOWED_HOSTS = ['127.0.0.1' ,'sampat8876.pythonanywhere.com', 'localhost', '146.148.111.20']
 
 INSTALLED_APPS = [
     'wagtail.contrib.forms',
