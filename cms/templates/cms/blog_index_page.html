@@ -3,61 +3,81 @@
 {% load static %}
 
 {% block content %}
-    <style> {# Set Background #}
-        body, html {
-            background-image: url("{% static 'images/starry2.jpg' %}");
-            object-fit: cover;
-            margin-bottom: -10px;
-        }
-    </style>
+<style>
+    body,
+    html {
+        background-image: url("{% static 'images/starry2.jpg' %}");
+        object-fit: cover;
+        margin-bottom: -10px;
+    }
+</style>
 
-    <div id="loadergif">
-        <img src="{% static 'images/loader_compressed.gif' %}" alt="Loading...">
-    </div>
-    <section class="section">
-        <div class="container">
-            <h1 class="index-title">{{ page.title }}</h1>
+<div id="loadergif">
+    <img src="{% static 'images/loader.gif' %}" alt="Loading...">
+</div>
+<section class="section">
+    <div class="container">
+        <h1 class="index-title">{{ page.title }}</h1>
 
-            <div class="blog-grid">
-                {% for post in posts %}
-                    <article class="card">
-                        {% if post.header_image %}
-                            <div class="card-image">
-                                {% image post.header_image fill-400x200 as img %}
-                                <img src="{{ img.url }}" alt="{{ img.alt }}">
-                            </div>
+        <div class="blog-grid">
+            {% for post in posts %}
+            <article class="card">
+                {% if post.header_image %}
+                <div class="card-image">
+                    {% image post.header_image fill-400x200 as img %}
+                    <img src="{{ img.url }}" alt="{{ img.alt }}">
+                </div>
+                {% endif %}
+
+                <div class="card-content">
+                    <h2 class="subtitle">
+                        <a href="{{ post.url }}">{{ post.title }}</a>
+                    </h2>
+                    <p class="has-text-grey">
+                        {% if post.date %}
+                        {{ post.date }}
+                        {% else %}
+                    <p
+                        style="background-color: rgb(22, 104, 79); border-radius: 10px; padding: 3px 0px 3px 10px; font-size: 1.3rem; width: 9rem;">
+                        Coming Soon</p>
+                    {% endif %}
+                    </p>
+
+                    <div class="post-preview">
+                        {% for block in post.body %}
+                        {% if block.block_type == "paragraph" %}
+                        {{ block.value|richtext|truncatewords:35 }}
                         {% endif %}
+                        {% endfor %}
+                    </div>
 
-                        <div class="card-content">
-                            <h2 class="subtitle">
-                                <a href="{{ post.url }}">{{ post.title }}</a>
-                            </h2>
-                            <p class="has-text-grey">{{ post.date }}</p>
-
-                            <div class="post-preview">
-                                {% for block in post.body %}
-                                    {% if block.block_type == "paragraph" %}
-                                        {{ block.value|richtext|truncatewords:35 }}
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-
-                            <a href="{{ post.url }}" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-                    {% empty %}
-                    <p>No posts yet.</p>
-                {% endfor %}
-            </div>
+                    <!-- <a href="{{ post.url }}" class="read-more">Read More →</a> -->
+                </div>
+            </article>
+            {% empty %}
+            <p>No posts yet.</p>
+            {% endfor %}
         </div>
-    </section>
-{#    <section class="credits">#}
-{#        <h2>Credits</h2>#}
-{#        <p>Created by Sameer Patil</p>#}
-{#        <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
-{#    </section>#}
-    <script>
+    </div>
+</section>
+{# <section class="credits">#}
+    {# <h2>Credits</h2>#}
+    {# <p>Created by Sameer Patil</p>#}
+    {# <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
+    {# </section>#}
+<script>
+    let currentURL = window.location.href;
+    let current = currentURL.slice(-9, -2);
+    console.log(current)
+    if (currentURL = "projects") {
+        let element = document.getElementById("prjbtn");
+        element.style.border = "2px solid rgb(61, 106, 255)";
+    }
+    else {
         let element = document.getElementById("postbtn");
         element.style.border = "2px solid rgb(61, 106, 255)";
-    </script>
+    }
+
+
+</script>
 {% endblock %}

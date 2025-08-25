@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" shrink-to-fit=no">
@@ -9,7 +10,8 @@
     <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2.0.1">
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             background-color: #1b1b1b;
@@ -26,7 +28,8 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: black; /* Fallback bg */
+            background-color: black;
+            /* Fallback bg */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,77 +47,81 @@
             opacity: 0;
             transition: opacity 0.6s ease-out;
         }
-
     </style>
 </head>
 
-<body {% if show_loader %}class="noscroll"{% endif %}> <!-- scroll disabled initially -->
-<!-- Loading Screen -->
-{#{% if show_loader %}#}
-{#    <div id="loader">#}
-{#        <video id="loadingVideo" autoplay muted playsinline>#}
-{#            <source src="{% static 'videos/launch_new.mp4' %}" type="video/mp4">#}
-{#            Your browser does not support the video tag.#}
-{#        </video>#}
-{#    </div>#}
-{#{% endif %}#}
-<!-- Main Screen -->
-<div id="main-content">
-    <nav class="navbar">
-        <div class="burger" onclick="toggleNav()">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+<body {% if show_loader %}class="noscroll" {% endif %}> <!-- scroll disabled initially -->
+    <!-- Loading Screen -->
+    <!-- {% if show_loader %}
+    <div id="loader">
+        <video id="loadingVideo" autoplay muted playsinline>
+            
+            <source src="{% static 'videos/launch_new.mp4' %}" type="video/mp4">
+             Your browser does not support the video tag.
+            
+        </video>
         </div>
-        <ul class="nav-links">
-            <li><a id="homebtn" href="{% url 'home' %}">Home</a></li>
-            <li><a id="gallerybtn" href="/gallery/">Gallery</a></li>
-            <li><a id="aboutbtn" href="/about/">About</a></li>
-            <li><a id="postbtn" href="/posts/">Posts</a></li>
-            <li><a id="calenderbtn" href="/astro-calender/">Astro-Calender</a></li>
-        </ul>
-    </nav>
-    <div id="sideNav" class="side-nav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/posts/">Posts</a></li>
-            <li><a href="/astro-calender/">Astro-Calender</a></li>
-            <li><a href="/gallery/">Gallery</a></li>
-        </ul>
+    {% endif %} -->
+    <!-- Main Screen -->
+    <div id="main-content">
+        <nav class="navbar">
+            <div class="burger" onclick="toggleNav()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a id="homebtn" href="{% url 'home' %}">Home</a></li>
+                <li><a id="aboutbtn" href="/about/">About</a></li>
+                <li><a id="gallerybtn" href="/gallery/">Gallery</a></li>
+                <li><a id="prjbtn" href="/projects/">Projects</a></li>
+                <li><a id="postbtn" href="/posts/">Posts</a></li>
+                <li><a id="calenderbtn" href="/astro-calender/">Astro-Calender</a></li>
+            </ul>
+        </nav>
+        <div id="sideNav" class="side-nav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/projects/">Projects</a></li>
+                <li><a href="/posts/">Posts</a></li>
+                <li><a href="/astro-calender/">Astro-Calender</a></li>
+                <li><a href="/gallery/">Gallery</a></li>
+            </ul>
+        </div>
+        {% block content %}
+        {% endblock %}
     </div>
-    {% block content %}
-    {% endblock %}
-</div>
 
-<script src="{% static 'js/script.js' %}?v=2.0.1"></script>
+    <script src="{% static 'js/script.js' %}?v=2.0.1"></script>
 
-<script>
-    const video = document.getElementById('loadingVideo');
-    const loader = document.getElementById('loader');
-    const main = document.getElementById('main-content');
-    const loadStartTime = Date.now();
+    <script>
+        const video = document.getElementById('loadingVideo');
+        const loader = document.getElementById('loader');
+        const main = document.getElementById('main-content');
+        const loadStartTime = Date.now();
 
-    // Ensure video is at least 1 second long before removing loader
+        // Ensure video is at least 1 second long before removing loader
 
-    video.addEventListener('ended', () => {
-        const minDuration = 1000; // 1 second
-        const elapsed = Date.now() - loadStartTime;
-        const waitTime = Math.max(0, minDuration - elapsed);
+        video.addEventListener('ended', () => {
+            const minDuration = 1000; // 1 second
+            const elapsed = Date.now() - loadStartTime;
+            const waitTime = Math.max(0, minDuration - elapsed);
 
-        setTimeout(() => {
-            loader.classList.add('fade-out');
             setTimeout(() => {
-                loader.style.display = 'none';
-                main.style.display = 'block';
+                loader.classList.add('fade-out');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    main.style.display = 'block';
 
-                document.body.classList.remove('noscroll');
-            }, 600); // match fade duration
-        }, waitTime);
-    });
+                    document.body.classList.remove('noscroll');
+                }, 600); // match fade duration
+            }, waitTime);
+        });
 
-</script>
+    </script>
 
 </body>
+
 </html>

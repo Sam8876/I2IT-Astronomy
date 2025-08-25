@@ -3,26 +3,28 @@
 {% load static %}
 
 {% block content %}
-    <section class="hero">
-            <video autoplay muted loop width="90vw" preload="auto" class="hero-video">
-                <source src="{% static 'videos/Earthview_2.mp4' %}" type="video/mp4">
-            </video>
-        <div class="overlay">
-            <p>WELCOME TO<br><font class="webtitle">I2IT ASTRONOMY CLUB</font></p>
-        </div>
-    </section>
+<section class="hero">
+    <video autoplay muted loop width="90vw" preload="auto" class="hero-video">
+        <source src="{% static 'videos/Earthview_2.mp4' %}" type="video/mp4">
+    </video>
+    <div class="overlay">
+        <p>WELCOME TO<br>
+            <font class="webtitle">I2IT ASTRONOMY CLUB</font>
+        </p>
+    </div>
+</section>
 
-    <section class="hero">
+<!-- <section class="hero">
         <video autoplay muted loop class="hero-video">
             <source src="{% static 'videos/Bg2 1.mp4' %}" type="video/mp4">
         </video>
         <div class="overlay overlay_text">
             <p>GALLERY</p>
         </div>
-    </section>
+    </section> -->
 
-    {# Blogs-------   #}
-    <section class="hero">
+<!-- Blogs-------   -->
+<!-- <section class="hero">
         <video autoplay muted loop class="hero-video">
             <source src="{% static 'videos/Videoplayback 1.mp4' %}" type="video/mp4">
         </video>
@@ -41,26 +43,26 @@
 
             <a class="viewall" href="/posts/"><span>LAUNCH</span></a>
         </div>
-    </section>
+    </section> -->
 
-{##}
-{#    <section class="credits">#}
-{#      <h2>Credits</h2>#}
-{#      <p>Created by the Sameer Patil</p>#}
-{#      <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
-{#    </section>#}
-    <script>
-        let element = document.getElementById("homebtn");
-        element.style.border = "2px solid rgb(61, 106, 255)";
 
-        window.onbeforeunload = function () {
+{# <section class="credits">#}
+    {# <h2>Credits</h2>#}
+    {# <p>By the Astronomy Club</p>#}
+    {# <p>&copy; {{ now.year }} International Institute of Information Technology</p>#}
+    {# </section>#}
+<script>
+    let element = document.getElementById("homebtn");
+    element.style.border = "2px solid rgb(61, 106, 255)";
+
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
+
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
             window.scrollTo(0, 0);
-        };
-
-        window.addEventListener('pageshow', function (event) {
-            if (event.persisted) {
-                window.scrollTo(0, 0);
-            }
-        });
-    </script>
+        }
+    });
+</script>
 {% endblock %}

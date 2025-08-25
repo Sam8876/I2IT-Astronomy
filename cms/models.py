@@ -40,7 +40,7 @@ class BlogIndexPage(Page):
 class BlogPage(Page):
     """A single blog article."""
     template = "cms/blog_page.html"
-    date = models.DateField("Post date")
+    date = models.DateField("Post date", blank=True, null=True)
     body = StreamField(
         [
             ("heading", blocks.CharBlock(classname="full title")),
