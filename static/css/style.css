@@ -432,7 +432,7 @@ h3 {
 }
 
 .hero-overlay .post-title {
-    font-size: 6vh;
+    font-size: 5vh;
     font-family: Hanken-Grotesk, sans-serif;
     text-shadow: #1b1b1b 1px 1px 7px;
     font-weight: bold;
@@ -663,7 +663,7 @@ h3 {
     padding-left: 6vw;
     padding-right: 6vw;
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     line-height: 1.7;
     max-width: 85vw;
     margin: auto;
@@ -769,6 +769,10 @@ h3 {
 
 /* Responsive */
 @media (max-width: 1180px) {
+
+    .hero-overlay .post-title {
+        font-size: 4vh;
+    }
 
     .overlay p {
         font-family: 'Agency FB Bold', sans-serif;
